@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, Menu, ShieldCheck, X } from "lucide-react";
 import { BrandConfig } from "@/brands/types";
 
 interface HeaderProps {
@@ -27,11 +27,11 @@ export function Header({ brand }: HeaderProps) {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6">
         <a
           href="#top"
-          className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2"
+          className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 rounded-lg"
           aria-label={brand.name}
         >
           <span
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-sm font-bold text-white shadow-sm"
+            className="flex h-10 w-10 items-center justify-center rounded-xl text-sm font-extrabold text-white shadow-sm transition-transform group-hover:scale-105"
             style={{ backgroundColor: "var(--brand-primary)" }}
           >
             {brand.logo.markText}
@@ -45,21 +45,26 @@ export function Header({ brand }: HeaderProps) {
             </span>
             {brand.logo.subtitle && (
               <span
-                className="text-[11px] font-medium"
+                className="flex items-center gap-1 text-[11px] font-medium"
                 style={{ color: "var(--brand-ink-muted)" }}
               >
+                <ShieldCheck
+                  className="h-3 w-3"
+                  style={{ color: "var(--brand-accent)" }}
+                  aria-hidden="true"
+                />
                 {brand.logo.subtitle}
               </span>
             )}
           </span>
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
           {brand.nav.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium transition-colors hover:opacity-80"
+              className="text-sm font-medium transition-colors hover:opacity-75"
               style={{ color: "var(--brand-ink-muted)" }}
             >
               {item.label}
@@ -72,7 +77,7 @@ export function Header({ brand }: HeaderProps) {
             href={brand.applyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold shadow-sm transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2"
+            className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-semibold shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2"
             style={{
               backgroundColor: "var(--brand-cta-bg)",
               color: "var(--brand-cta-text)",
@@ -88,7 +93,7 @@ export function Header({ brand }: HeaderProps) {
             aria-expanded={menuOpen}
             aria-controls="mobile-nav-drawer"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border transition-colors hover:bg-slate-50 md:hidden"
             style={{
               borderColor: "var(--brand-border)",
               color: "var(--brand-ink)",
@@ -102,7 +107,7 @@ export function Header({ brand }: HeaderProps) {
       {menuOpen && (
         <div
           id="mobile-nav-drawer"
-          className="border-t bg-white px-4 py-4 md:hidden"
+          className="border-t bg-white px-4 py-4 shadow-lg md:hidden"
           style={{ borderColor: "var(--brand-border)" }}
         >
           <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
@@ -111,7 +116,7 @@ export function Header({ brand }: HeaderProps) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-base font-medium transition-colors hover:bg-slate-50"
+                className="rounded-xl px-3.5 py-2.5 text-base font-medium transition-colors hover:bg-slate-50"
                 style={{ color: "var(--brand-ink)" }}
               >
                 {item.label}
@@ -120,7 +125,7 @@ export function Header({ brand }: HeaderProps) {
             {brand.supportEmail && (
               <a
                 href={`mailto:${brand.supportEmail}`}
-                className="mt-2 rounded-lg px-3 py-2 text-sm"
+                className="mt-2 rounded-xl px-3.5 py-2 text-sm"
                 style={{ color: "var(--brand-ink-muted)" }}
               >
                 Questions? {brand.supportEmail}
@@ -131,7 +136,7 @@ export function Header({ brand }: HeaderProps) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
-              className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-base font-semibold shadow-sm"
+              className="mt-3 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-base font-semibold shadow-sm"
               style={{
                 backgroundColor: "var(--brand-cta-bg)",
                 color: "var(--brand-cta-text)",
