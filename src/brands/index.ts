@@ -1,10 +1,10 @@
 import { drcertificateConfig } from "./drcertificate";
-//import { getmedicalcertificateConfig } from "./getmedicalcertificate";
+import { getmedicalcertificateConfig } from "./getmedicalcertificate";
 import { BrandConfig, BrandId } from "./types";
 
 export const BRANDS: Record<BrandId, BrandConfig> = {
   drcertificate: drcertificateConfig,
-  //getmedicalcertificate: getmedicalcertificateConfig,
+  getmedicalcertificate: getmedicalcertificateConfig,
 };
 
 export const BRAND_LIST: BrandConfig[] = Object.values(BRANDS);

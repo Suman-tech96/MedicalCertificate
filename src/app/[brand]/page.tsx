@@ -33,7 +33,7 @@ export async function generateMetadata({
 export default async function BrandRoutePage({ params }: BrandPageProps) {
   const { brand: slug } = await params;
   const brandId = parseBrandId(slug);
-  if (!brandId) {
+  if (!brandId || !BRANDS[brandId]) {
     notFound();
   }
 
