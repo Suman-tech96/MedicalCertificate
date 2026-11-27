@@ -41,11 +41,11 @@ export const getmedicalcertificateConfig: BrandConfig = {
     primaryCtaLabel: "Apply now",
     secondaryCtaLabel: "How it works",
     nav: [
-        { label: "Services", href: "#services" },
-        { label: "How it works", href: "#how-it-works" },
-        { label: "Doctors", href: "#doctors" },
-        { label: "Countries", href: "#coverage" },
-        { label: "FAQ", href: "#faq" },
+        { label: "Services", href: "services" },
+        { label: "How it works", href: "how-it-works" },
+        { label: "Doctors", href: "doctors" },
+        { label: "Countries", href: "coverage" },
+        { label: "FAQ", href: "faq" },
     ],
     hero: {
         eyebrow: "Telemedicine & medical certificates",
@@ -335,23 +335,23 @@ export const getmedicalcertificateConfig: BrandConfig = {
             {
                 heading: "Product",
                 links: [
-                    { label: "Services", href: "#services" },
-                    { label: "How it works", href: "#how-it-works" },
-                    { label: "FAQ", href: "#faq" },
+                    { label: "Services", href: "services" },
+                    { label: "How it works", href: "how-it-works" },
+                    { label: "FAQ", href: "faq" },
                 ],
             },
             {
                 heading: "Company",
                 links: [
-                    { label: "Doctors", href: "#doctors" },
-                    { label: "Coverage (40+ countries)", href: "#coverage" },
+                    { label: "Doctors", href: "doctors" },
+                    { label: "Coverage (40+ countries)", href: "coverage" },
                 ],
             },
             {
                 heading: "Legal",
                 links: [
-                    { label: "Privacy & GDPR", href: "#legal" },
-                    { label: "Refund & Cancellations", href: "#pricing" },
+                    { label: "Privacy & GDPR", href: "legal" },
+                    { label: "Refund & Cancellations", href: "pricing" },
                 ],
             },
         ],

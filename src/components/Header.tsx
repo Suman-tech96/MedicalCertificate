@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, ShieldCheck, X } from "lucide-react";
 import { BrandConfig } from "@/brands/types";
+import { SectionLink } from "./SectionLink";
 
 interface HeaderProps {
   brand: BrandConfig;
@@ -25,10 +26,11 @@ export function Header({ brand }: HeaderProps) {
       style={{ borderColor: "var(--brand-border)" }}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6">
-        <a
-          href="#top"
-          className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 rounded-lg"
-          aria-label={brand.name}
+        <SectionLink
+          brandId={brand.id}
+          href="top"
+          className="group flex cursor-pointer items-center gap-3 rounded-lg text-left focus:outline-none focus-visible:ring-2"
+          ariaLabel={brand.name}
         >
           <span
             className="flex h-10 w-10 items-center justify-center rounded-xl text-sm font-extrabold text-white shadow-sm transition-transform group-hover:scale-105"
@@ -57,18 +59,19 @@ export function Header({ brand }: HeaderProps) {
               </span>
             )}
           </span>
-        </a>
+        </SectionLink>
 
         <nav className="hidden items-center gap-2 md:flex" aria-label="Primary">
           {brand.nav.map((item) => (
-            <a
+            <SectionLink
               key={item.href}
+              brandId={brand.id}
               href={item.href}
-              className="rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-150 hover:bg-slate-100/80"
+              className="cursor-pointer rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-150 hover:bg-slate-100/80"
               style={{ color: "var(--brand-ink-muted)" }}
             >
               {item.label}
-            </a>
+            </SectionLink>
           ))}
         </nav>
 
@@ -112,15 +115,16 @@ export function Header({ brand }: HeaderProps) {
         >
           <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
             {brand.nav.map((item) => (
-              <a
+              <SectionLink
                 key={item.href}
+                brandId={brand.id}
                 href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className="rounded-xl px-3.5 py-2.5 text-base font-medium transition-colors hover:bg-slate-50"
+                onNavigate={() => setMenuOpen(false)}
+                className="w-full cursor-pointer rounded-xl px-3.5 py-2.5 text-left text-base font-medium transition-colors hover:bg-slate-50"
                 style={{ color: "var(--brand-ink)" }}
               >
                 {item.label}
-              </a>
+              </SectionLink>
             ))}
             {brand.supportEmail && (
               <a

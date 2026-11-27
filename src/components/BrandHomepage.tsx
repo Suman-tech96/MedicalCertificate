@@ -20,14 +20,16 @@ import { BrandConfig } from "@/brands/types";
 import { Header } from "./Header";
 import { FaqAccordion } from "./FaqAccordion";
 import { getFlagStyle } from "./countryFlags";
+import { SectionLink, SectionScroller } from "./SectionLink";
 
 interface BrandHomepageProps {
   brand: BrandConfig;
+  initialSection?: string;
 }
 
 const SERVICE_ICONS = [Stethoscope, HeartPulse, Plane, FileText];
 
-export function BrandHomepage({ brand }: BrandHomepageProps) {
+export function BrandHomepage({ brand, initialSection }: BrandHomepageProps) {
   const themeVars = {
     "--brand-primary": brand.theme.primary,
     "--brand-primary-hover": brand.theme.primaryHover,
@@ -54,6 +56,7 @@ export function BrandHomepage({ brand }: BrandHomepageProps) {
       style={themeVars}
       className="min-h-screen bg-white pb-20 text-slate-900 md:pb-0"
     >
+      <SectionScroller section={initialSection} />
       <Header brand={brand} />
 
       <main>
@@ -143,9 +146,10 @@ export function BrandHomepage({ brand }: BrandHomepageProps) {
                   {brand.primaryCtaLabel}
                   <ArrowRight className="h-5 w-5" aria-hidden="true" />
                 </a>
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center rounded-xl border px-6 py-4 text-base font-semibold transition-colors hover:opacity-90"
+                <SectionLink
+                  brandId={brand.id}
+                  href="services"
+                  className="inline-flex cursor-pointer items-center justify-center rounded-xl border px-6 py-4 text-base font-semibold transition-colors hover:opacity-90"
                   style={{
                     borderColor: isDarkHero
                       ? "rgba(255,255,255,0.35)"
@@ -157,7 +161,7 @@ export function BrandHomepage({ brand }: BrandHomepageProps) {
                   }}
                 >
                   {brand.secondaryCtaLabel}
-                </a>
+                </SectionLink>
               </div>
 
               <div
@@ -653,11 +657,10 @@ export function BrandHomepage({ brand }: BrandHomepageProps) {
               </p>
 
               <div
-                className={`mt-6 grid gap-4 ${
-                  brand.doctorsSection.doctors.length > 1
-                    ? "sm:grid-cols-2"
-                    : "grid-cols-1"
-                }`}
+                className={`mt-6 grid gap-4 ${brand.doctorsSection.doctors.length > 1
+                  ? "sm:grid-cols-2"
+                  : "grid-cols-1"
+                  }`}
               >
                 {brand.doctorsSection.doctors.map((doc) => {
                   const initials = doc.name
@@ -1079,12 +1082,13 @@ export function BrandHomepage({ brand }: BrandHomepageProps) {
                   <ul className="mt-3.5 space-y-2.5">
                     {col.links.map((link) => (
                       <li key={link.label}>
-                        <a
+                        <SectionLink
+                          brandId={brand.id}
                           href={link.href}
-                          className="inline-block text-sm text-white/80 transition-all duration-150 hover:translate-x-0.5 hover:text-white"
+                          className="inline-block cursor-pointer text-left text-sm text-white/80 transition-all duration-150 hover:translate-x-0.5 hover:text-white"
                         >
                           {link.label}
-                        </a>
+                        </SectionLink>
                       </li>
                     ))}
                   </ul>

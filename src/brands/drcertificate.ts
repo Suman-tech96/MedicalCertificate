@@ -40,11 +40,11 @@ export const drcertificateConfig: BrandConfig = {
   secondaryCtaLabel: "Explore services",
   supportEmail: "care@drcertificate.com",
   nav: [
-    { label: "Services", href: "#services" },
-    { label: "How it works", href: "#how-it-works" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Rules & Legal", href: "#legal" },
-    { label: "FAQs", href: "#faq" },
+    { label: "Services", href: "services" },
+    { label: "How it works", href: "how-it-works" },
+    { label: "Pricing", href: "pricing" },
+    { label: "Rules & Legal", href: "legal" },
+    { label: "FAQs", href: "faq" },
   ],
   hero: {
     eyebrow: "Online medical certificates · Reviewed by certified doctors",
@@ -253,26 +253,26 @@ export const drcertificateConfig: BrandConfig = {
       {
         heading: "Certificates",
         links: [
-          { label: "Sick leave", href: "#services" },
-          { label: "Medical fitness", href: "#services" },
-          { label: "Unfit to fly", href: "#services" },
-          { label: "General medical", href: "#services" },
+          { label: "Sick leave", href: "services" },
+          { label: "Medical fitness", href: "services" },
+          { label: "Unfit to fly", href: "services" },
+          { label: "General medical", href: "services" },
         ],
       },
       {
         heading: "Information",
         links: [
-          { label: "How it works", href: "#how-it-works" },
-          { label: "Pricing", href: "#pricing" },
-          { label: "Countries", href: "#coverage" },
-          { label: "FAQs", href: "#faq" },
+          { label: "How it works", href: "how-it-works" },
+          { label: "Pricing", href: "pricing" },
+          { label: "Countries", href: "coverage" },
+          { label: "FAQs", href: "faq" },
         ],
       },
       {
         heading: "Legal & Contact",
         links: [
           { label: "care@drcertificate.com", href: "mailto:care@drcertificate.com" },
-          { label: "Rules & eligibility", href: "#legal" },
+          { label: "Rules & eligibility", href: "legal" },
         ],
       },
     ],
