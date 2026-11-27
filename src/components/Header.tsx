@@ -59,12 +59,12 @@ export function Header({ brand }: HeaderProps) {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-2 md:flex" aria-label="Primary">
           {brand.nav.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium transition-colors hover:opacity-75"
+              className="rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-150 hover:bg-slate-100/80"
               style={{ color: "var(--brand-ink-muted)" }}
             >
               {item.label}
