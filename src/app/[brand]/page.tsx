@@ -7,6 +7,15 @@ interface BrandPageProps {
   params: Promise<{ brand: string }>;
 }
 
+export function generateStaticParams() {
+  return [
+    { brand: "drcertificate" },
+    { brand: "getmedicalcertificate" },
+    { brand: "dr" },
+    { brand: "gmc" },
+  ];
+}
+
 export async function generateMetadata({
   params,
 }: BrandPageProps): Promise<Metadata> {

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { resolveBrand } from "@/brands";
@@ -23,7 +24,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function HomePage({ searchParams }: HomePageProps) {
+async function ResolvedHome({
+  searchParams,
+}: {
+  searchParams: Promise<{ brand?: string }>;
+}) {
   const params = await searchParams;
   const headerList = await headers();
   const brand = resolveBrand({
@@ -32,4 +37,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   });
 
   return <BrandHomepage brand={brand} />;
+}
+
+export default function HomePage({ searchParams }: HomePageProps) {
+  const defaultBrand = resolveBrand({});
+
+  return (
+    <Suspense fallback={<BrandHomepage brand={defaultBrand} />}>
+      <ResolvedHome searchParams={searchParams} />
+    </Suspense>
+  );
 }
